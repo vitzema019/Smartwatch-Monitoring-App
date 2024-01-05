@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <title>Senzors</title>
+    <link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
+    <link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
+    <!-- load theme file for your application -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+	<!-- Hlavní stránka aplikace -->
+    <div class="ui-page ui-page-active" id="main">
+        <header class="ui-header">
+            <h2 class="ui-title">Senzors info</h2>
+        </header>
+        <div class="ui-content">
+            <ul class="ui-listview">
+                <li><a href="#two" id="openBPM">Srdeční tep</a>
+                </li>
+                <li><a href="#three" id="openBar">Barometer</a>
+                </li>
+                <li><a href="#four" id="openLight">Světlo</a>
+                </li>
+                <li><a href="#five" id="openStats">Hodnoty</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Stránka pro měření srdečního tepu -->
+    <div id="two" class="ui-page">
+        <header class="ui-header">
+            <h2 class="ui-title">Srdeční tep</h2>
+        </header>
+        <div class="ui-content">
+            <ul class="ui-list">
+                <li>
+                    <p class="ui-text">Poseldní měření:
+                        <br><span id="lastBPM">Žádná data</span>
+                    </p>
+                </li>
+                <li>
+                    <a href="#popup" data-rel="popup">
+                        <button class="ui-btn ui-btn-accept" id="startBtn">Začít měřit</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+		
+		<!-- Popup okno, které se zobrazí při spuštění měření -->
+        <div id="popup" class="ui-popup">
+            <div class="ui-popup-header">Měření</div>
+            <div class="ui-popup-content">
+                <p class="ui-text" id="hrmData">Žádná data</p>
+                <button class="ui-btn ui-btn-cancel" id="stopBtn">Zrušit</button>
+            </div>
+
+        </div>
+    </div>
+
+	<!-- Stránka pro měření atmosferikého tlaku -->
+    <div id="three" class="ui-page">
+        <header class="ui-header">
+            <h2 class="ui-title">Tlak</h2>
+        </header>
+        <div class="ui-content">
+            <ul class="ui-list">
+                <li>
+                    <p class="ui-text">Poseldní měření:
+                        <br><span id="lastBar">Žádná data</span>
+                    </p>
+                </li>
+                <li>
+                    <a href="#popupBar" data-rel="popup">
+                        <button class="ui-btn ui-btn-accept" id="startBtnBar">Začít měřit</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+		<!-- Popup okno, které se zobrazí při spuštění měření -->
+        <div id="popupBar" class="ui-popup">
+            <div class="ui-popup-header">Tlak</div>
+            <div class="ui-popup-content">
+                <p class="ui-text" id="barData">Žádná data</p>
+                <button class="ui-btn ui-btn-cancel" id="stopBtnBar">Zpět</button>
+            </div>
+
+        </div>
+    </div>
+
+	<!-- Stránka pro měření úrovně světla -->
+    <div id="four" class="ui-page">
+        <header class="ui-header">
+            <h2 class="ui-title">Světlo</h2>
+        </header>
+        <div class="ui-content">
+            <ul class="ui-list">
+                <li>
+                    <p class="ui-text">Poseldní měření:
+                        <br><span id="lastLight">Žádná data</span>
+                    </p>
+                </li>
+                <li>
+                    <a href="#popupLight" data-rel="popup">
+                        <button class="ui-btn ui-btn-accept" id="startBtnLight">Začít měřit</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+		<!-- Popup okno, které se zobrazí při spuštění měření -->
+        <div id="popupLight" class="ui-popup">
+            <div class="ui-popup-header">Světlo</div>
+            <div class="ui-popup-content">
+                <p class="ui-text" id="lightData">Žádná data</p>
+                <button class="ui-btn ui-btn-cancel" id="stopBtnLight">Zpět</button>
+            </div>
+
+        </div>
+    </div>
+
+	<!-- Stránka pro zobrazení všech naměřených hodnot a následného odelání na API -->
+    <div id="five" class="ui-page">
+        <header class="ui-header">
+            <h2 class="ui-title">Data</h2>
+        </header>
+        <div class="ui-content">
+            <ul class="ui-listview">
+                <li>
+                    <p class="ui-text">Srdeční tep: <span id="BPMVal">none</span>
+                    </p>
+                </li>
+                <li>
+                    <p class="ui-text">Tlak: <span id="BarVal">none</span>
+                    </p>
+                </li>
+                <li>
+                    <p class="ui-text">Světlo: <span id="LightVal">none</span>
+                    </p>
+                </li>
+                <li>
+                    <a href="#popupData" data-rel="popup">
+                        <button class="ui-btn ui-btn-accept" id="sendBtn">Odeslat hodnoty</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+		<!-- Popup okno, které se zobrazí při odesílání dat -->
+        <div id="popupData" class="ui-popup">
+            <div class="ui-popup-header">Odeslání</div>
+            <div class="ui-popup-content">
+                <p class="ui-text" id="messageData">Odesílání...</p>
+                <button class="ui-btn ui-btn-cancel" id="backBtnData">Zpět</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="lib/tau/wearable/js/tau.min.js"></script>
+    <script src="js/circle-helper.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- JavaScript pro měření srdečního tepu -->
+    <script src="js/hrm.js"></script>
+    
+    <!-- JavaScript pro zobrazování a odesílaní dat -->
+    <script src="js/data.js"></script>
+    
+    <!-- Javascript pro měření atmosferického tlaku -->
+    <script src="js/bar.js"></script>
+    
+    <!-- JavaScript pro měření úrvoně světla -->´
+    <script src="js/light.js"></script>
+    
+    <script src="js/lowBatteryCheck.js"></script>
+</body>
+
+</html>

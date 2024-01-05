@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="E:\workspace\2022-p4-prj-maturitni-prace-vitzema019\WatchApi\WatchApi\obj\Release\net6.0\PubTmp\Out\" />
+  <dbfullsql path="E:\workspace\2022-p4-prj-maturitni-prace-vitzema019\WatchApi\WatchApi\obj\Release\net6.0\PubTmp\EFSQLScripts\WatchApi.Data.ApplicationDbContext.sql" />
+</sitemanifest>
